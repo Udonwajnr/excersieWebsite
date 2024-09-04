@@ -30,14 +30,14 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
   // Pagination
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
-  const currentExercises = exercises.slice(indexOfFirstExercise, indexOfLastExercise) || [];
+  const currentExercises = exercises?.slice(indexOfFirstExercise, indexOfLastExercise) || [];
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
     window.scrollTo({ top: 1800, behavior: "smooth" });
   };
 
-  if (!exercises.length) return <Loader />;
+  if (!exercises?.length) return <Loader />;
 
   console.log(exercises)
   return (
@@ -59,7 +59,7 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
           <ExerciseCard key={exercise.id} exercise={exercise} />
         ))}
       </Stack>
-      {exercises.length > exercisesPerPage && (
+      {exercises?.length > exercisesPerPage && (
         <Stack sx={{ mt: { lg: "114px", xs: "70px" } }} alignItems="center">
           <Pagination
             color="standard"
